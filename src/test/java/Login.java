@@ -35,7 +35,7 @@ public class Login {
         //driver.quit();
     }
 
-    @Test(enabled = false)
+    @Test(enabled = true)
     public void TestLoginPositiv(){
         driver.get(url);
         driver.findElement(By.name("email")).sendKeys("buquxahu@cars2.club");
@@ -96,7 +96,7 @@ public class Login {
     }
 
     //Registration test
-    @Test
+    @Test(enabled = false)
     public void TestRegistration(){
         driver.get(url);
 
