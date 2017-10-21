@@ -33,6 +33,8 @@ public class LoginPage extends BasePage{
 
     @FindBy(xpath = "//em[@class='icon-user']")
     private WebElement userIcon;
+    @FindBy(xpath = "//p[contains(.,'Sign Out')]")
+    private WebElement signOut;
 
 
     public LoginPage(WebDriver driver){
@@ -65,6 +67,9 @@ public class LoginPage extends BasePage{
     public WebElement getLogo() {
         return wait.until(ExpectedConditions.visibilityOf(logo));
     }
+    public WebElement  getLoginText(){
+        return wait.until(ExpectedConditions.visibilityOf(loginButton));
+    }
 
     public String getEmailRequiredField(){
         return emailRequiredField.getText();
@@ -80,6 +85,17 @@ public class LoginPage extends BasePage{
 
     public String getUserIconAttribut(){
         return userIcon.getAttribute("class");
+    }
+
+    public void clickUserIcon(){
+
+        wait.until(ExpectedConditions.elementToBeClickable(userIcon));
+        executor.executeScript("arguments[0].click();",userIcon);
+    }
+    public void clickSignOut(){
+
+        wait.until(ExpectedConditions.elementToBeClickable(signOut));
+        executor.executeScript("arguments[0].click();",signOut);
     }
 
 }
