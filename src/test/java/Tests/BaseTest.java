@@ -18,6 +18,7 @@ public class BaseTest {
      private LoginPage login;
 
 
+
     @BeforeClass
     public void baseBeforeClass() {
         driver = new ChromeDriver();
@@ -30,7 +31,7 @@ public class BaseTest {
     }
     @AfterClass
     public void baseAfterClass(){
-       // driver.close();
+        driver.close();
     }
 
     @Test

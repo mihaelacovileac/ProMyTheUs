@@ -117,10 +117,14 @@ public class Login {
         String password="MASHA12534";
         driver.findElement(By.id("signUpRegisterPassword")).sendKeys(password);
         driver.findElement(By.id("signUpRegisterRePassword")).sendKeys(password);
+
+
         //Select country
         String country = "Venezuela";
         driver.findElement(By.xpath(".//*[@id='signUpCountry']/span")).click();
         driver.findElement(By.xpath("//span[contains(.,'"+ country +"')]")).click();
+
+
         //type address
         String address = "123 MAIN ST.";
         driver.findElement(By.id("signUpAddress")).sendKeys(address);

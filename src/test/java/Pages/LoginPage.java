@@ -59,6 +59,7 @@ public class LoginPage extends BasePage{
         this.setPasswordLogin(strPasswordLogin);
         this.loginButton.click();
 
+
     }
 
     public WebElement getLogo() {
