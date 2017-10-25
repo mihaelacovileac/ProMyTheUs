@@ -18,7 +18,7 @@ public class MyProfilePage extends BasePage{
         wait.until(ExpectedConditions.elementToBeClickable(myProfileLink));
         executor.executeScript("arguments[0].click();",myProfileLink);
     }
-    //Have to check value"Milla"
+    //Have to check value"Milla", no value present on html page
     public String getFirstNameAttribute(){
         return firstName.getAttribute("value");
     }

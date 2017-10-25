@@ -60,6 +60,9 @@ public class RegistrationTest extends BaseTest{
         loginPage.clickLoginButton();
         loginPage.clickUserIcon();
         myProfilePage.clickMyProfileLink();
+        String country = registrationPage.getTextCountry();
+
+        Assert.assertEquals("Albania", country);
 
     }
 

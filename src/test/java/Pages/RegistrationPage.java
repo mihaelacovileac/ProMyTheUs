@@ -64,6 +64,9 @@ public class RegistrationPage extends BasePage  {
     @FindBy(xpath = "//strong[text()= 'SIGN IN TO CONTINUE']")
     private WebElement verifyReg;
 
+    public String getTextCountry(){
+        return  chooseCountry.getText();
+    }
 
     public void clickSelectedCountry(){
         wait.until(ExpectedConditions.elementToBeClickable(chooseCountry));
