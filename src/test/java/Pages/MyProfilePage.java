@@ -57,6 +57,11 @@ public class MyProfilePage extends BasePage{
     private WebElement confirmNewPassword;
     @FindBy(xpath = "//button[@class= 'btn btn-primary'][1]")
     private  WebElement updatePasswordBtn;
+    @FindBy(xpath = "//p[contains(.,'Password changed successfully.')]")
+    private WebElement passwordChangeSuccessfully;
+    @FindBy(xpath = "//div[@class='sa-placeholder']")
+    private WebElement popUpLogo;
+
 
     //error message locators for change password form
     @FindBy(xpath = "//span[contains(.,'This value is required.')]")
@@ -112,6 +117,12 @@ public class MyProfilePage extends BasePage{
     }
     public String getConfirmNewPassword(){
         return confirmNewPassword.getAttribute("value");
+    }
+    public String getPasswordChangeSuccessfully(){
+        wait.until(ExpectedConditions.visibilityOf(passwordChangeSuccessfully));
+        return passwordChangeSuccessfully.getText();}
+    public WebElement getPopUpLogo() {
+        return wait.until(ExpectedConditions.visibilityOf(popUpLogo));
     }
 
     public void ChangePassword(String strCurrentPassword, String strNewPassword,String strConfirmNewPassword){
