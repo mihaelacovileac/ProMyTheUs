@@ -90,7 +90,8 @@ public class LoginPage extends BasePage{
     public void clickUserIcon(){
 
         wait.until(ExpectedConditions.elementToBeClickable(userIcon));
-        executor.executeScript("arguments[0].click();",userIcon);
+       // executor.executeScript("arguments[0].click();",userIcon);
+        userIcon.click();
     }
     public void clickSignOut(){
 

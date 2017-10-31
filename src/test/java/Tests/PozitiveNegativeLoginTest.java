@@ -8,7 +8,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-public class LoginTest extends BaseTest {
+public class PozitiveNegativeLoginTest extends BaseTest {
 private LoginPage loginPage;
 
 @BeforeClass

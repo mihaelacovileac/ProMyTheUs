@@ -48,6 +48,9 @@ public class MyProfilePage extends BasePage{
     @FindBy(xpath = "//button[@id='updateProfile']")
     private WebElement updateBtn;
 
+    @FindBy(css = "button.confirm")
+    private WebElement okBtn;
+
     //Password Change form
     @FindBy(xpath ="//input[@id='currentPassword']")
     private WebElement currentPassword;
@@ -55,8 +58,9 @@ public class MyProfilePage extends BasePage{
     private  WebElement newPassword;
     @FindBy(xpath = "//input[@id='confirmNewPassword']")
     private WebElement confirmNewPassword;
-    @FindBy(xpath = "//button[@class= 'btn btn-primary'][1]")
+    @FindBy(xpath = "//*[@id='formPassword']/button")
     private  WebElement updatePasswordBtn;
+   // @FindBy(css = "div.sweet-alert showSweetAlert.visible")
     @FindBy(xpath = "//p[contains(.,'Password changed successfully.')]")
     private WebElement passwordChangeSuccessfully;
     @FindBy(xpath = "//div[@class='sa-placeholder']")
@@ -78,6 +82,7 @@ public class MyProfilePage extends BasePage{
         return requiredValue.getText();
     }
     public String getErrorCurrentPasswordWrong(){
+        wait.until(ExpectedConditions.visibilityOf(currentPasswordWrong));
         return currentPasswordWrong.getText();
     }
     public String getErrorValueIsToLong(){
@@ -85,6 +90,12 @@ public class MyProfilePage extends BasePage{
     }
     public String getErrorPasswordNotMatch(){
         return passwordNotMatch.getText();
+    }
+
+
+    public void clickOkBtn(){
+        wait.until(ExpectedConditions.elementToBeClickable(okBtn));
+        okBtn.click();
     }
 
 
@@ -104,8 +115,9 @@ public class MyProfilePage extends BasePage{
         confirmNewPassword.sendKeys(strConfirmNewPassword);
     }
     public void clickUpdatePassword(){
-       // wait.until(ExpectedConditions.elementToBeClickable(updatePasswordBtn));
-        executor.executeScript("arguments[0].click();",updatePasswordBtn);
+        wait.until(ExpectedConditions.elementToBeClickable(updatePasswordBtn));
+       // executor.executeScript("arguments[0].click();",updatePasswordBtn);
+        updatePasswordBtn.click();
 
     }
     //get methods for change password form

@@ -15,7 +15,7 @@ public class BaseTest {
      protected WebDriver driver;
      private String url;
      protected WebDriverWait wait;
-     private LoginPage login;
+     protected LoginPage login;
 
 
 
@@ -25,18 +25,16 @@ public class BaseTest {
         url = "http://ec2-52-53-181-39.us-west-1.compute.amazonaws.com/sign-in.html";
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-        wait = new WebDriverWait(driver, 10);
+        wait = new WebDriverWait(driver, 5);
         driver.get(url);
         login = new LoginPage(driver);
     }
     @AfterClass
-    public void baseAfterClass(){
-        driver.close();
+    public void baseAfterClass(){ //driver.close();
     }
 
-    @Test
+    @Test(enabled = false)
     public void assertLogo(){
         assertTrue(login.getLogo().isDisplayed());
-
     }
     }
