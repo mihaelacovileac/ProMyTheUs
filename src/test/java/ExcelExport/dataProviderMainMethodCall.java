@@ -5,5 +5,5 @@ public class dataProviderMainMethodCall {
         Data_ProviderReadXL dp = new Data_ProviderReadXL();
         dp.dataProviderRead("projectInputData.xlsx", "loginInfo");
 
-    }
+}
 }

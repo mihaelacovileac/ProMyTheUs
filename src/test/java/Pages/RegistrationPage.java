@@ -70,10 +70,11 @@ public class RegistrationPage extends BasePage  {
         return  chooseCountry.getText();
     }
 
-    public void clickSelectedCountry(){
-        wait.until(ExpectedConditions.elementToBeClickable(chooseCountry));
-        executor.executeScript("arguments[0].click();",chooseCountry);
+    public void clickSelectedCountry(String country){
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[contains(.,'"+ country +"')]")));
+        driver.findElement(By.xpath("//span[contains(.,'" + country + "')]")).click();
     }
+
 
     public void clickCountryField(){
         wait.until(ExpectedConditions.elementToBeClickable(clickCountryField));
@@ -165,4 +166,5 @@ public class RegistrationPage extends BasePage  {
     public String getVerificationRegistration(){
         return verifyReg.getText();
     }
+
 }

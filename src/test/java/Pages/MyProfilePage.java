@@ -239,7 +239,7 @@ public class MyProfilePage extends BasePage{
         return phone.getAttribute("value");
     }
     public String getCountry(){
-        return country.getAttribute("value");
+        return country.getText();
     }
     public String getAddress(){
         return address.getAttribute("value");
