@@ -42,6 +42,8 @@ public class RegistrationPage extends BasePage  {
 
     @FindBy(id = "signUpAddress")
     private WebElement typeAddress;
+    @FindBy(xpath = "//*[@id=\"registerForm\"]/div[2]/div[1]/div[2]/div[2]/div/div/div[2]/input")
+    private  WebElement apartment;
 
     @FindBy(id = "signUpCity")
     private WebElement typeCity;
@@ -99,6 +101,10 @@ public class RegistrationPage extends BasePage  {
     public void setAddress(String strAddress){
         typeAddress.clear();
         wait.until(ExpectedConditions.visibilityOf(typeAddress)).sendKeys(strAddress);
+    }
+    public void setAddressApartment(String strApartment){
+        apartment.clear();
+        wait.until(ExpectedConditions.visibilityOf(apartment)).sendKeys(strApartment);
     }
     public void setRetypePassword(String strPassword){
         retypePassword.clear();

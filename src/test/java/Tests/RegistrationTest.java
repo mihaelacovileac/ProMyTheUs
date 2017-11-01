@@ -1,26 +1,21 @@
 package Tests;
 
+import ExcelExport.ExcelApiTest;
 import Pages.LoginPage;
 import Pages.MyProfilePage;
 import Pages.RegistrationPage;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 public class RegistrationTest extends BaseTest{
     private RegistrationPage registrationPage;
     private LoginPage loginPage;
     private MyProfilePage myProfilePage;
-    String password = "phillipa12345";
-    String firstName = "Milla";
-    String middleInitial ="I";
-    String lastName ="SOM";
-    String email = "filllipa12345@yahoo.com";
-    String phone = "8798767876";
-    String address ="123 Main St.";
-    String city = "Tampa";
-    String state = "Florida";
-    String zip = "55555";
+      String pass = "phillipa12345";
+      String email = "filllipa12345@yahoo.com";
+
     @BeforeClass
     public void BeforeTest(){
 
@@ -29,34 +24,37 @@ public class RegistrationTest extends BaseTest{
         myProfilePage = new MyProfilePage(driver);
 
     }
-    @Test(enabled = false)
-    public void TestRegistrationNewUser(){
+    @Test(dataProvider = "registrationInfo")
+    public void TestRegistrationNewUser(String First, String Middle,String Last,String Email, String Phone,
+                                        String Address, String Apartment, String City, String State,
+                                        String PostalCode, String password,String Retype){
 
         registrationPage.clickRegisterBtn();
         registrationPage.userTypeCheckBox();
-        registrationPage.setFirstName(firstName);
-        registrationPage.setMiddleNameInitial(middleInitial);
-        registrationPage.setLastName(lastName);
-        registrationPage.setRegistrationEmail(email);
-        registrationPage.setPhoneNumber(phone);
-        registrationPage.setPassword(password);
-        registrationPage.setRetypePassword(password);
+        registrationPage.setFirstName(First);
+        registrationPage.setMiddleNameInitial(Middle);
+        registrationPage.setLastName(Last);
+        registrationPage.setRegistrationEmail(Email);
+        registrationPage.setPhoneNumber(Phone);
         //set country
         registrationPage.clickCountryField();
         registrationPage.clickSelectedCountry();
-        registrationPage.setAddress(address);
-        registrationPage.setCity(city);
-        registrationPage.setState(state);
-        registrationPage.setTypeZipCode(zip);
+        registrationPage.setAddress(Address);
+        registrationPage.setAddressApartment(Apartment);
+        registrationPage.setCity(City);
+        registrationPage.setState(State);
+        registrationPage.setTypeZipCode(PostalCode);
+        registrationPage.setPassword(password);
+        registrationPage.setRetypePassword(Retype);
         registrationPage.clickCreateAccount();
 
         String verification = registrationPage.getVerificationRegistration();
         Assert.assertEquals("",verification);
     }
-    @Test(priority = 1)
+    @Test(enabled = false)
     public  void TestNewAccountVerification(){
         loginPage.setUserLogin(email);
-        loginPage.setPasswordLogin(password);
+        loginPage.setPasswordLogin(pass);
         loginPage.clickLoginButton();
         loginPage.clickUserIcon();
         myProfilePage.clickMyProfileLink();
@@ -64,6 +62,28 @@ public class RegistrationTest extends BaseTest{
 
         Assert.assertEquals("Albania", country);
 
+    }
+
+    String xlFilePath = "projectInputData.xlsx";
+    String sheetName = "registrationInfo";
+    ExcelApiTest eat = null;
+    @DataProvider(name = "registrationInfo")
+    public Object[][] userFormatData()throws Exception{
+        Object[][] data = testData(xlFilePath,sheetName);
+        return data;
+    }
+    public Object[][] testData(String xlFilePath, String sheetName) throws Exception{
+        Object[][] excelData = null;
+        eat = new ExcelApiTest(xlFilePath);
+        int rows =eat.getRowCount(sheetName);
+        int columns = eat.getColumnCount(sheetName);
+        excelData = new Object[rows-1][columns];
+        for(int i=1;i<rows; i++){
+            for(int j=0; j<columns; j++){
+                excelData[i-1][j]=eat.getCellData(sheetName, j, i);
+            }
+        }
+        return excelData;
     }
 
 }
