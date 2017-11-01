@@ -15,7 +15,7 @@ import static org.testng.Assert.assertTrue;
 
 import java.util.concurrent.TimeUnit;
 
-public class Login {
+public class firstTestsLogin {
     private WebDriver driver;
     private String url;
     private WebDriverWait wait;
