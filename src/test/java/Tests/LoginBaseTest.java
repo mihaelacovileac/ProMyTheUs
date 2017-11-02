@@ -14,8 +14,8 @@ public class LoginBaseTest extends BaseTest {
     }
     @Test(priority = 1)
     public void testLogin(){
-        loginPage.setUserLogin("buquxahu@cars2.club");
-        loginPage.setPasswordLogin("kisulea");
+        loginPage.setUserLogin("filllipa12345@yahoo.com");
+        loginPage.setPasswordLogin("phillipa12345");
         loginPage.clickLoginButton();
         String userIcon = loginPage.getUserIconAttribut();
         Assert.assertEquals("icon-user",userIcon);

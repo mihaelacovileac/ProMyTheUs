@@ -2,6 +2,7 @@ package Tests;
 
 import Pages.LoginPage;
 import Pages.MyProfilePage;
+import Parameters.DataProviderClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -16,7 +17,15 @@ public class ChangePasswordPozitive extends LoginBaseTest {
         myProfilePage = new MyProfilePage(driver);
         loginPage =new LoginPage(driver);
     }
-    @Test(priority = 2,dataProvider = "passwordChange")
+    @DataProvider(name = "passwordFromSameClass")
+    public Object[][] getDataFromDataProvider1(){
+        return new Object[][]{
+                {"filllipa12345@yahoo.com","phillipa12345","phillipa"},
+                {"filllipa12345@yahoo.com","phillipa","phillipa12345"}
+
+        };
+    }
+    @Test(priority = 2,dataProvider = "passwordFromSameClass")
     public  void testChangePassword(String email, String password, String newPassword){
         loginPage.clickUserIcon();
         myProfilePage.clickMyProfileLink();
@@ -38,17 +47,38 @@ public class ChangePasswordPozitive extends LoginBaseTest {
             loginPage.setPasswordLogin(password);
         }
         loginPage.clickLoginButton();
-       // loginPage.clickUserIcon();
-        //loginPage.clickSignOut();
 
     }
-    @DataProvider(name = "passwordChange")
-    public Object[][] getDataFromDataProvider(){
-        return new Object[][]{
-                {"buquxahu@cars2.club","kisulea","kisulea"},
-                {"buquxahu@cars2.club","kisulea","kisulea"}
 
-        };
+    @Test(dataProviderClass = DataProviderClass.class,dataProvider= "passwordChange", enabled = false)
+    public void TestChangePassword(String email, String password, String newPassword) throws InterruptedException{
+        loginPage.setUserLogin(email);
+        loginPage.setPasswordLogin(password);
+        loginPage.clickLoginButton();
+        loginPage.clickUserIcon();
+        myProfilePage.clickMyProfileLink();
+        myProfilePage.clickChangePasswordLink();
+        myProfilePage.setCurrentPassword(password);
+        myProfilePage.setNewPassword(newPassword);
+        myProfilePage.setConfirmNewPassword(newPassword);
+        myProfilePage.clickUpdatePassword();
+        String message= myProfilePage.getPasswordChangeSuccessfully();
+        assertEquals(message, "Password changed successfully.");
+        myProfilePage.clickOkBtn();
+        loginPage.clickUserIcon();
+        loginPage.clickSignOut();
+        loginPage.setUserLogin(email);
+        try {
+            loginPage.setPasswordLogin(newPassword);
+        }
+        catch (Exception e){
+            loginPage.setPasswordLogin(password);
+        }
+        loginPage.clickLoginButton();
+        loginPage.clickUserIcon();
+        loginPage.clickSignOut();
+
+
     }
 
 }

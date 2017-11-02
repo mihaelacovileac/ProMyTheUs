@@ -19,7 +19,7 @@ public void BeforeTest(){
 @Test(priority = 1)
 public void TestInvalidCredentials(){
     loginPage.setUserLogin("masha@yahoo.com");
-    loginPage.setPasswordLogin("kisulea");
+    loginPage.setPasswordLogin("phillipa12345");
     loginPage.clickLoginButton();
     String error = loginPage.getWrongCredentialsMessage();
     Assert.assertEquals("Invalid Email or Password.",error);
@@ -27,7 +27,7 @@ public void TestInvalidCredentials(){
 
     @Test(priority = 2)
     public void TestInvalidPassword(){
-        loginPage.setUserLogin("buquxahu@cars2.club");
+        loginPage.setUserLogin("filllipa12345@yahoo.com");
         loginPage.setPasswordLogin("kis12345");
         loginPage.clickLoginButton();
         String error = loginPage.getWrongCredentialsMessage();
@@ -37,7 +37,7 @@ public void TestInvalidCredentials(){
     @Test(priority = 3)
     public void TestEmptyUserName(){
         loginPage.setUserLogin("");
-        loginPage.setPasswordLogin("kis12345");
+        loginPage.setPasswordLogin("phillipa12345");
         loginPage.clickLoginButton();
         String error = loginPage.getEmailRequiredField();
         Assert.assertEquals("This value is required.",error);
@@ -45,7 +45,7 @@ public void TestInvalidCredentials(){
 
     @Test(priority = 4)
     public void TestEmptyPasswordField(){
-        loginPage.setUserLogin("buquxahu@cars2.club");
+        loginPage.setUserLogin("filllipa12345@yahoo.com");
         loginPage.setPasswordLogin("");
         loginPage.clickLoginButton();
         String error = loginPage.getPasswordRequiredField();
@@ -64,8 +64,8 @@ public void TestInvalidCredentials(){
     }
 @Test(priority = 6)
 public void TestPositive(){
-    loginPage.setUserLogin("buquxahu@cars2.club");
-    loginPage.setPasswordLogin("kisulea");
+    loginPage.setUserLogin("filllipa12345@yahoo.com");
+    loginPage.setPasswordLogin("phillipa12345");
     loginPage.clickLoginButton();
     String userIcon = loginPage.getUserIconAttribut();
     Assert.assertEquals("icon-user",userIcon);

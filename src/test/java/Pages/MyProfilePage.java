@@ -76,8 +76,11 @@ public class MyProfilePage extends BasePage{
     private WebElement valueIsToLong;
     @FindBy(xpath = "//span[contains(.,'The passwords do not match.')]")
     private WebElement passwordNotMatch;
+    @FindBy(xpath = "//span[contains(.,'This value is too short. It should have 6 characters or more.')]")
+    private  WebElement valueIsToShort;
 
     //Methods for error messages change password form
+    public String getErrorValueIsToShort(){ return valueIsToShort.getText();}
     public String getErrorTextRequiredField(){
         return requiredValue.getText();
     }
@@ -89,6 +92,7 @@ public class MyProfilePage extends BasePage{
         return valueIsToLong.getText();
     }
     public String getErrorPasswordNotMatch(){
+
         return passwordNotMatch.getText();
     }
 
