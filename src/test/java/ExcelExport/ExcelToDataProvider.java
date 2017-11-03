@@ -7,8 +7,7 @@ public class ExcelToDataProvider {
     String xlFilePath = "projectInputData.xlsx";
     String sheetName = "loginInfo";
     ExcelApiTest eat = null;
-    @Test(dataProvider = "userData")
-    public void fillUserForm(String userName, String passWord)
+    @Test(dataProvider = "userData") public void fillUserForm(String userName, String passWord)
     {
         System.out.println("UserName: "+ userName);
         System.out.println("PassWord: "+ passWord);

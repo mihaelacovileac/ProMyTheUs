@@ -98,5 +98,4 @@ public class LoginPage extends BasePage{
         wait.until(ExpectedConditions.elementToBeClickable(signOut));
         executor.executeScript("arguments[0].click();",signOut);
     }
-
 }

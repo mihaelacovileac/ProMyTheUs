@@ -46,30 +46,6 @@ public class ExcelApiTest
         int colCount = row.getLastCellNum();
         return colCount;
     }
-//    public String getCellData(String sheetName,int colNum,int rowNum) {
-//        try {
-//            sheet = workbook.getSheet(sheetName);
-//            row = sheet.getRow(rowNum);
-//            cell = row.getCell(colNum);
-//            if (cell.getCellTypeEnum() == CellType.STRING)
-//                return cell.getStringCellValue();
-//            else if (cell.getCellTypeEnum() == CellType.NUMERIC || cell.getCellTypeEnum() == CellType.FORMULA) {
-//                String cellValue = String.valueOf(cell.getNumericCellValue());
-//                if (HSSFDateUtil.isCellDateFormatted(cell)) {
-//                    DateFormat df = new DateFormat("dd/MM/yy");
-//                    Date date = cell.getDateCellValue();
-//                    //cellValue = df.format(date);
-//                }
-//                return cellValue;
-//            } else if (cell.getCellTypeEnum() == CellType.BLANK)
-//                return "";
-//            else
-//                return String.valueOf(cell.getBooleanCellValue());
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//            return "row " + rowNum + " or column " + colNum + " does not exist  in Excel";
-//        }
-//    }
 public String getCellData(String sheetName,int colNum,int rowNum) {
     DataFormatter df = new DataFormatter();
     try {

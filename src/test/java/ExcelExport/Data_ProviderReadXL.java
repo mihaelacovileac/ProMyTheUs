@@ -54,8 +54,7 @@ public class Data_ProviderReadXL {
                     Cell cell = cellIterator.next();
                     tabArray[rownum][colnum] = formatter.formatCellValue(cell);
                     System.out.print(formatter.formatCellValue(cell));
-                    System.out.print(" , ");
-                }
+                    System.out.print(" , "); }
                 rownum++;
                 System.out.println(" ");
             }

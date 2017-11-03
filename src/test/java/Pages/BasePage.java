@@ -9,7 +9,6 @@ public class BasePage {
     protected WebDriver driver;
     protected WebDriverWait wait;
     protected JavascriptExecutor executor;
-
     public BasePage(WebDriver driver){
         this.driver = driver;
         PageFactory.initElements(driver, this);
