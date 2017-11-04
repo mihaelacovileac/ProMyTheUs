@@ -1,0 +1,25 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+
+
+<suite name="Promytheus">
+    <parameter name="url" value="http://ec2-52-53-181-39.us-west-1.compute.amazonaws.com/sign-in.html"/>
+    <parameter name="browser" value="appium"/>
+    <!--test name = "login and talents">
+        <classes>
+            <class name="tests.InvalidLoginTest"/>
+            <class name="tests.TalentsPageTest"/>
+        </classes>
+    </test>
+    <test name = "new user">
+        <classes>
+            <class name="tests.CategoryPageTest"/>
+        </classes>
+    </test-->
+    <test name="ru">
+        <classes>
+            <!--class name="tests.PersonalPageTest"/-->
+            <class name="Tests.LogoutTest"/>
+        </classes>
+    </test>
+</suite>
