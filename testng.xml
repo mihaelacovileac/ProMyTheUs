@@ -4,22 +4,20 @@
 
 <suite name="Promytheus">
     <parameter name="url" value="http://ec2-52-53-181-39.us-west-1.compute.amazonaws.com/sign-in.html"/>
-    <parameter name="browser" value="appium"/>
-    <!--test name = "login and talents">
+    <parameter name="browser" value="chrome"/>
+    <test name = "testCategory">
         <classes>
-            <class name="tests.InvalidLoginTest"/>
-            <class name="tests.TalentsPageTest"/>
+            <class name="Tests.TalentsPageTest"/>
         </classes>
     </test>
-    <test name = "new user">
+    <!--test name = "new user">
         <classes>
             <class name="tests.CategoryPageTest"/>
         </classes>
     </test-->
-    <test name="ru">
+    <!--test name="ru">
         <classes>
-            <!--class name="tests.PersonalPageTest"/-->
             <class name="Tests.LogoutTest"/>
         </classes>
-    </test>
+    </test-->
 </suite>

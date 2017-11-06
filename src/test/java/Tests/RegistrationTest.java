@@ -1,6 +1,6 @@
 package Tests;
 
-import ExcelExport.ExcelApiTest;
+import ExcelAndData.ExcelApiTest;
 import Pages.LoginPage;
 import Pages.MyProfilePage;
 import Pages.RegistrationPage;

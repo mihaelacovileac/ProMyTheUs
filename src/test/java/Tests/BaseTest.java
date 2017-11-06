@@ -83,8 +83,8 @@ public class BaseTest {
     }
     }
     @AfterClass
-    public void baseAfterClass(){ driver.close();
-    driver.quit();
+    public void baseAfterClass(){// driver.close();
+    //driver.quit();
     }
 
     @Test(enabled = false)

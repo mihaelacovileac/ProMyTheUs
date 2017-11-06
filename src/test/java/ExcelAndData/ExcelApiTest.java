@@ -1,9 +1,5 @@
-package ExcelExport;
+package ExcelAndData;
 
-import jxl.write.DateFormat;
-import org.apache.poi.hssf.usermodel.HSSFDateUtil;
-import org.apache.poi.ss.usermodel.CellType;
-import org.apache.poi.ss.usermodel.DataFormat;
 import org.apache.poi.ss.usermodel.DataFormatter;
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
@@ -11,9 +7,6 @@ import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 public class ExcelApiTest
 {
@@ -60,4 +53,21 @@ public String getCellData(String sheetName,int colNum,int rowNum) {
         return "row " + rowNum + " or column " + colNum + " does not exist  in Excel";
     }
 }
+    public Object[][] testData(String sheetName) throws Exception
+
+    {
+        Object[][] excelData = null;
+        int rows = getRowCount(sheetName);
+        int columns = getColumnCount(sheetName);
+
+        excelData = new Object[rows-1][columns];
+        for(int i=1; i<rows; i++)
+        {
+            for(int j=0; j<columns; j++)
+            {
+                excelData[i-1][j] = getCellData(sheetName, j, i);
+            }
+        }
+        return excelData;
+    }
 }

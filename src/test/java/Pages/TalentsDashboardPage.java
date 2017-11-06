@@ -8,8 +8,8 @@ import org.openqa.selenium.support.ui.Select;
 
 import java.util.List;
 
-public class TalentsPage extends BasePage {
-    public TalentsPage(WebDriver driver){
+public class TalentsDashboardPage extends BasePage {
+    public TalentsDashboardPage(WebDriver driver){
         super(driver);
     }
     //Assert That you are on the talents page

@@ -1,4 +1,4 @@
-package ExcelExport;
+package ExcelAndData;
 
 public class dataProviderMainMethodCall {
     public static void main(String[] args){

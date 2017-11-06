@@ -1,17 +1,12 @@
 package Tests;
 
-import ExcelExport.ExcelApiTest;
+import ExcelAndData.ExcelApiTest;
 import Pages.LoginPage;
 import Pages.MyProfilePage;
 import Pages.RegistrationPage;
-import Parameters.DataProviderClass;
-import javafx.scene.control.Alert;
 import org.openqa.selenium.By;
-import org.openqa.selenium.support.ui.ExpectedCondition;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import static org.testng.Assert.assertTrue;
@@ -108,29 +103,18 @@ public class ChangePasswordNegativeTests extends BaseTest {
     }
     //code below is for data provider from excel file
 
-    String xlFilePath = "projectInputData.xlsx";
-    ExcelApiTest eat = null;
+
     @DataProvider(name = "userPass")
     public Object[][] userFormatData()throws Exception{
-        Object[][] data = testData(xlFilePath,"userPass");
+        ExcelApiTest eat = new ExcelApiTest("projectInputData.xlsx");
+        Object[][] data = eat.testData("userPass");
         return data;
     }
     @DataProvider(name = "changePasswordNegative")
     public Object[][] userFormatData2()throws Exception{
-        Object[][] data = testData(xlFilePath,"changePasswordNegative");
+        ExcelApiTest eat = new ExcelApiTest("projectInputData.xlsx");
+        Object[][] data = eat.testData("changePasswordNegative");
         return data;
     }
-    public Object[][] testData(String xlFilePath, String sheetName) throws Exception{
-        Object[][] excelData = null;
-        eat = new ExcelApiTest(xlFilePath);
-        int rows =eat.getRowCount(sheetName);
-        int columns = eat.getColumnCount(sheetName);
-        excelData = new Object[rows-1][columns];
-        for(int i=1;i<rows; i++){
-            for(int j=0; j<columns; j++){
-                excelData[i-1][j]=eat.getCellData(sheetName, j, i);
-            }
-        }
-        return excelData;
-    }
+
 }

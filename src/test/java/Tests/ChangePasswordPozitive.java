@@ -1,8 +1,8 @@
 package Tests;
 
+import ExcelAndData.DataProviders;
 import Pages.LoginPage;
 import Pages.MyProfilePage;
-import Parameters.DataProviderClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -50,7 +50,7 @@ public class ChangePasswordPozitive extends LoginBaseTest {
 
     }
 
-    @Test(dataProviderClass = DataProviderClass.class,dataProvider= "passwordChange", enabled = false)
+    @Test(dataProviderClass = DataProviders.class,dataProvider= "passwordChange", enabled = false)
     public void TestChangePassword(String email, String password, String newPassword) throws InterruptedException{
         loginPage.setUserLogin(email);
         loginPage.setPasswordLogin(password);
