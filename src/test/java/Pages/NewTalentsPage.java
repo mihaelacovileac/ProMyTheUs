@@ -1,5 +1,7 @@
 package Pages;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -7,6 +9,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.Iterator;
 import java.util.List;
+import java.util.Random;
 
 public class NewTalentsPage extends BasePage {
     public NewTalentsPage(WebDriver driver){
@@ -14,19 +17,19 @@ public class NewTalentsPage extends BasePage {
     }
     //Personal info Page locators
 
-    @FindBy(id = "firstName")
+    @FindBy(xpath = "//input[@name='firstName']")
     public WebElement firstNameField; // input field First name
-    @FindBy(id = "middleName")
+    @FindBy(xpath = "//input[@name='middleName']")
     public WebElement middleNameField; // input field Middle name
-    @FindBy(id = "lastName")
+    @FindBy(xpath = "//input[@name='lastName']")
     public WebElement lastNameField; // input field Last name
-    @FindBy(id = "dateBirth")
+    @FindBy(xpath = "//input[@name='dateBirth']")
     public WebElement dobField; // input field Date of birth
-    @FindBy(id = "placeBirth")
+    @FindBy(xpath = "//input[@name='placeBirth']")
     public WebElement placeOfBirthField; //input field Place of birth
     @FindBy(id = "country")
     public WebElement countryField; //input field Country
-    @FindBy(id = "address")
+    @FindBy(xpath = "//input[@id='address']")
     public WebElement addressField; //input field Address
     @FindBy(xpath = "//input[@name='city']")
     public WebElement cityField;  //input city
@@ -36,25 +39,33 @@ public class NewTalentsPage extends BasePage {
     public WebElement zipField;//Input zip code
     @FindBy(xpath = "//input[@name='location']")
     public List<WebElement> chooseLocations; //radio buttons to choose Location
-    @FindBy(xpath = "//input[@name='state']")
-    public List<WebElement> chooseLocationStatusBtn; //radio buttons to choose Status of location
-    @FindBy(id = "email")
+//    @FindBy(css = "div.form-group:nth-child(10) > div:nth-child(2) > label:nth-child(1) > span:nth-child(2)")
+//    public List<WebElement> chooseLocationStatusBtn; //radio buttons to choose Status of location
+    @FindBy(css = "div.form-group:nth-child(10) > div:nth-child(2) > label:nth-child(1) > span:nth-child(2)")
+    private WebElement radioPrivileged;
+    @FindBy(xpath = "//input[@value='PRIVILEGED']")
+    private WebElement privilegedClass;
+    @FindBy(xpath = "//input[@name='email']")
     public WebElement emailField; //input field Email
-    @FindBy(id = "phone")
+    @FindBy(xpath = "//input[@name='phone']")
     public WebElement phoneField; //input field Phone
     @FindBy(xpath = "//a[@class='social-account-more ng-binding']")
     public WebElement socialAccountLink; //link to add social account
-    @FindBy(xpath = "//span[@class='ui-select-placeholder text-muted ng-binding']")
-    public WebElement socialAccountDropdown; //dropdown to select social network
-    @FindBy(id = "ui-select-choices-row-1-0")
-    public WebElement facebookOption; //line with Facebook option
+//    @FindBy(xpath = "//span[@class='ui-select-placeholder text-muted ng-binding']")
+//    public WebElement socialAccountDropdown; //dropdown to select social network
+//    @FindBy(id = "ui-select-choices-row-1-0")
+//    public WebElement facebookOption; //line with Facebook option
+     @FindBy(xpath = "//span[@class='ui-select-placeholder text-muted ng-binding']")
+     private WebElement selectSocialAccount;
     @FindBy(xpath = "//div[@class='col-lg-9']/input")
     public WebElement facebookAccount; //input field Social account
     @FindBy(xpath = "//a[@class='social-account-more ng-binding']")
     public WebElement moreSocialAcountsLink;// more social accounts link
-    @FindBy(id = "height")
+    @FindBy(xpath = "//*[@id='talentForm']/wizard-form/div/div[1]/div[1]/fieldset[2]/div/div/div[12]/div/div[2]/div[3]/a")
+    private WebElement removeLink;
+    @FindBy(xpath = "//input[@name='height']")
     public WebElement heightField; //input field Height
-    @FindBy(id = "weight")
+    @FindBy(xpath = "//input[@name='weight']")
     public WebElement weightField; //input field Weight
 
     //talent Traits page locators
@@ -77,50 +88,155 @@ public class NewTalentsPage extends BasePage {
     @FindBy(name = "//option[@value='PASSIONATE']")
     public WebElement interestLevelOption; //dropdown to choose interest level passionate
 
-    @FindBy(name = "trainingHistory")
-    public WebElement trainingHistoryOption; //dropdown to choose years of training
-    @FindBy(xpath = "(//input[@name='coached'])[2]")
-    public WebElement coachedOption; //radiobuttons to choose if talent was coached
-    @FindBy(xpath = "(//input[@name='training'])[1]")
-    public WebElement trainingOption; //choose training option
-    @FindBy(name = "schoolName")
-    public WebElement schoolNameField; //input field for School or college name
-    @FindBy(name = "schoolSuccessLevel")
-    public WebElement schoolSuccessLevelField; //input field for academic success level
-    @FindBy(name = "skill")
-    public List<WebElement> skills; //radiobutton to choose skills level
-    @FindBy(xpath = "(//span[@class='fa fa-check'])[2]")
-    public WebElement testimoniesList; //checkbox to choose source of testimonies (family, friends, etc.)
-    @FindBy(name = "testimony0")
-    public WebElement testimonyField; //input field Testimony
-    @FindBy(name = "workProduct")
-    public WebElement workProductField; //input field Work product
-    @FindBy(xpath = "(//span[@class='fa fa-circle'])[12]")
-    public WebElement familyIncomeLevel; //radiobutton to choose income level
-    @FindBy(xpath = "//input[@placeholder='USD']")
-    public WebElement familyIncomeField; //input field for income amount
+//    @FindBy(name = "trainingHistory")
+//    public WebElement trainingHistoryOption; //dropdown to choose years of training
+//    @FindBy(xpath = "(//input[@name='coached'])[2]")
+//    public WebElement coachedOption; //radiobuttons to choose if talent was coached
+//    @FindBy(xpath = "(//input[@name='training'])[1]")
+//    public WebElement trainingOption; //choose training option
+//    @FindBy(name = "schoolName")
+//    public WebElement schoolNameField; //input field for School or college name
+//    @FindBy(name = "schoolSuccessLevel")
+//    public WebElement schoolSuccessLevelField; //input field for academic success level
+//    @FindBy(name = "skill")
+//    public List<WebElement> skills; //radiobutton to choose skills level
+//    @FindBy(xpath = "(//span[@class='fa fa-check'])[2]")
+//    public WebElement testimoniesList; //checkbox to choose source of testimonies (family, friends, etc.)
+//    @FindBy(name = "testimony0")
+//    public WebElement testimonyField; //input field Testimony
+//    @FindBy(name = "workProduct")
+//    public WebElement workProductField; //input field Work product
+//    @FindBy(xpath = "(//span[@class='fa fa-circle'])[12]")
+//    public WebElement familyIncomeLevel; //radiobutton to choose income level
+//    @FindBy(xpath = "//input[@placeholder='USD']")
+//    public WebElement familyIncomeField; //input field for income amount
 
 
-    @FindBy(id = "talentGutFeel")
-    public WebElement talentGutFeelField; //input field for Gut feel
-    @FindBy(id = "rationalGutFeel")
-    public WebElement talentRationaleField; //input field for Rational reason for gut feel
-    @FindBy(id = "independentScore")
-    public WebElement scoreField; //input field Score
-    @FindBy(id = "relativeRankAmongTalents")
-    public WebElement rankField; //input field Rank
-    @FindBy(name = "categoryTrait0")
-    public WebElement tTrait1; //input field for talent trait
-    @FindBy(name = "categoryTrait2")
-    public WebElement tTrait2; //input field for talent trait
-    @FindBy(name = "categoryTrait3")
-    public WebElement tTrait3; //input field for talent trait
-    @FindBy(xpath = "(//span[@class='fa fa-check'])[5]")
-    public WebElement personalTrait1; //checkbox for personal trait
-    @FindBy(xpath = "(//span[@class='fa fa-check'])[7]")
-    public WebElement personalTrait2; //checkbox for personal trait
-    @FindBy(xpath = "(//span[@class='fa fa-check'])[8]")
-    public WebElement personalTrait3; //checkbox for personal trait
+//    @FindBy(id = "talentGutFeel")
+//    public WebElement talentGutFeelField; //input field for Gut feel
+//    @FindBy(id = "rationalGutFeel")
+//    public WebElement talentRationaleField; //input field for Rational reason for gut feel
+//    @FindBy(id = "independentScore")
+//    public WebElement scoreField; //input field Score
+//    @FindBy(id = "relativeRankAmongTalents")
+//    public WebElement rankField; //input field Rank
+//    @FindBy(name = "categoryTrait0")
+//    public WebElement tTrait1; //input field for talent trait
+//    @FindBy(name = "categoryTrait2")
+//    public WebElement tTrait2; //input field for talent trait
+//    @FindBy(name = "categoryTrait3")
+//    public WebElement tTrait3; //input field for talent trait
+//    @FindBy(xpath = "(//span[@class='fa fa-check'])[5]")
+//    public WebElement personalTrait1; //checkbox for personal trait
+//    @FindBy(xpath = "(//span[@class='fa fa-check'])[7]")
+//    public WebElement personalTrait2; //checkbox for personal trait
+//    @FindBy(xpath = "(//span[@class='fa fa-check'])[8]")
+//    public WebElement personalTrait3; //checkbox for personal trait
+
+
+
+    //Methods for personal page
+    public void setFirstNameField(String setFirst){
+        wait.until(ExpectedConditions.visibilityOf(firstNameField));
+        firstNameField.sendKeys(setFirst);
+    }
+    public void setMiddleName(String middleName) {
+        wait.until(ExpectedConditions.visibilityOf(middleNameField));
+        middleNameField.sendKeys(middleName);
+    }
+    public void setLastName(String lastName) {
+        wait.until(ExpectedConditions.visibilityOf(lastNameField));
+        lastNameField.sendKeys(lastName);
+    }
+    public void setDOB(String dob) {
+        wait.until(ExpectedConditions.visibilityOf(dobField));
+        dobField.sendKeys(dob);
+    }
+    public void setPlaceOfBirth(String placeOfBirth) {
+        wait.until(ExpectedConditions.visibilityOf(placeOfBirthField));
+        placeOfBirthField.sendKeys(placeOfBirth);
+    }
+    public void setAddress(String address) {
+        wait.until(ExpectedConditions.visibilityOf(addressField));
+        addressField.sendKeys(address);
+    }
+    public void setcityField(String strCity){
+        wait.until(ExpectedConditions.visibilityOf(cityField));
+        cityField.sendKeys(strCity);
+    }
+    public void setStateField(String strStateField){
+        wait.until(ExpectedConditions.visibilityOf(addressStateField));
+        addressStateField.sendKeys(strStateField);
+    }
+    public  void setzipField(String intZipField){
+        wait.until(ExpectedConditions.visibilityOf(zipField));
+        zipField.sendKeys(intZipField);
+    }
+    public void chooseLocation() {
+        List<WebElement> locations = chooseLocations;
+        Random random = new Random();
+        int indexL = random.nextInt(locations.size());
+        locations.get(indexL).click();
+    }
+//    public void chooseLocationStatus() {
+//        List<WebElement> states = chooseLocationStatusBtn;
+//        Random random = new Random();
+//        int indexLS = random.nextInt(states.size());
+//        states.get(indexLS).click();
+//    }
+    public String selectPrivileged(){
+    wait.until(ExpectedConditions.elementToBeClickable(radioPrivileged));
+    executor.executeScript("arguments[0].click()", radioPrivileged);
+    return privilegedClass.getAttribute("class");
+    }
+    public void setTalentEmail(String newEmail) {
+        wait.until(ExpectedConditions.visibilityOf(emailField));
+        emailField.sendKeys(newEmail);
+    }
+    public void setPhone(String phone) {
+        wait.until(ExpectedConditions.visibilityOf(phoneField));
+        phoneField.sendKeys(phone);
+    }
+    public void addSocialAccount() {
+        wait.until(ExpectedConditions.visibilityOf(socialAccountLink));
+        socialAccountLink.click();
+    }
+//    public void openSocialAccsDropdown() {
+//        wait.until(ExpectedConditions.visibilityOf(socialAccountLink));
+//        socialAccountDropdown.click();
+//    }
+//    public void addFacebookAccount() {
+//        wait.until(ExpectedConditions.visibilityOf(facebookOption));
+//       // executor.executeScript("arguments[0].click();",facebookOption);
+//        facebookOption.sendKeys(Keys.ENTER);
+//    }
+    public void selectSocial(String social){
+//        executor.executeScript("arguments[0].click()", selectSocialAccount);
+    selectSocialAccount.click();
+    wait.until(ExpectedConditions.presenceOfElementLocated(
+
+            By.xpath("//span[contains(.,'" + social + "')]"))).click();
+}
+    public void setFacebookAccount(String socialAccount) {
+        wait.until(ExpectedConditions.visibilityOf(facebookAccount));
+        facebookAccount.sendKeys(socialAccount);
+    }
+    public  void clickmoreSocialAcountsLink(){
+        wait.until(ExpectedConditions.visibilityOf(moreSocialAcountsLink));
+        moreSocialAcountsLink.click();
+    }
+    public  void clickRemoveLink(){
+        wait.until(ExpectedConditions.visibilityOf(removeLink));
+        removeLink.click();
+    }
+    public void setHeight(String intheight) {
+        wait.until(ExpectedConditions.visibilityOf(heightField));
+        heightField.sendKeys(intheight);
+    }
+    public void setWeight(String intweight) {
+        wait.until(ExpectedConditions.visibilityOf(weightField));
+        weightField.sendKeys(intweight);
+    }
 
     //methods for insert scales into TalentTraits page(list)
     public List<WebElement> getNrOfRowsInputFields(){
@@ -133,7 +249,6 @@ public class NewTalentsPage extends BasePage {
             iterator.next().sendKeys(intScale);
         }
     }
-
     //methods for selecting checkBoxes on personality traits page
     public List<WebElement> getNumberOfCheckBxPersonalityTraits() {
         wait.until(ExpectedConditions.visibilityOfAllElements(checkboxPersonalityTraits));
