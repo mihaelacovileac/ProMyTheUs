@@ -77,6 +77,7 @@ public class TalentsPageTest extends LoginBaseTest {
             itr.next().sendKeys(Integer.toString(numbers[i]));
             i++;
         }
+
         categoryPage.clickNextBtn();
 
         //Have to continue next pages before assertion
