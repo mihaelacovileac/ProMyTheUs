@@ -58,9 +58,9 @@ public class BaseTest {
 
         capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME,"Android");
 
-        capabilities.setCapability(MobileCapabilityType.DEVICE_NAME,"Android Emulator");
+        capabilities.setCapability(MobileCapabilityType.DEVICE_NAME,"Android");
 
-        capabilities.setCapability(MobileCapabilityType.VERSION,"7.1.1");
+        capabilities.setCapability(MobileCapabilityType.VERSION,"6.0.1");
 
         URL urlHub = new URL("http://127.0.0.1:4723/wd/hub");
 

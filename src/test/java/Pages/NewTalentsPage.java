@@ -39,8 +39,6 @@ public class NewTalentsPage extends BasePage {
     public WebElement zipField;//Input zip code
     @FindBy(xpath = "//input[@name='location']")
     public List<WebElement> chooseLocations; //radio buttons to choose Location
-//    @FindBy(css = "div.form-group:nth-child(10) > div:nth-child(2) > label:nth-child(1) > span:nth-child(2)")
-//    public List<WebElement> chooseLocationStatusBtn; //radio buttons to choose Status of location
     @FindBy(css = "div.form-group:nth-child(10) > div:nth-child(2) > label:nth-child(1) > span:nth-child(2)")
     private WebElement radioPrivileged;
     @FindBy(xpath = "//input[@value='PRIVILEGED']")
@@ -51,12 +49,8 @@ public class NewTalentsPage extends BasePage {
     public WebElement phoneField; //input field Phone
     @FindBy(xpath = "//a[@class='social-account-more ng-binding']")
     public WebElement socialAccountLink; //link to add social account
-//    @FindBy(xpath = "//span[@class='ui-select-placeholder text-muted ng-binding']")
-//    public WebElement socialAccountDropdown; //dropdown to select social network
-//    @FindBy(id = "ui-select-choices-row-1-0")
-//    public WebElement facebookOption; //line with Facebook option
-     @FindBy(xpath = "//span[@class='ui-select-placeholder text-muted ng-binding']")
-     private WebElement selectSocialAccount;
+    @FindBy(xpath = "//span[@class='ui-select-placeholder text-muted ng-binding']")
+    private WebElement selectSocialAccount;
     @FindBy(xpath = "//div[@class='col-lg-9']/input")
     public WebElement facebookAccount; //input field Social account
     @FindBy(xpath = "//a[@class='social-account-more ng-binding']")
@@ -178,12 +172,6 @@ public class NewTalentsPage extends BasePage {
         int indexL = random.nextInt(locations.size());
         locations.get(indexL).click();
     }
-//    public void chooseLocationStatus() {
-//        List<WebElement> states = chooseLocationStatusBtn;
-//        Random random = new Random();
-//        int indexLS = random.nextInt(states.size());
-//        states.get(indexLS).click();
-//    }
     public String selectPrivileged(){
     wait.until(ExpectedConditions.elementToBeClickable(radioPrivileged));
     executor.executeScript("arguments[0].click()", radioPrivileged);
@@ -201,15 +189,6 @@ public class NewTalentsPage extends BasePage {
         wait.until(ExpectedConditions.visibilityOf(socialAccountLink));
         socialAccountLink.click();
     }
-//    public void openSocialAccsDropdown() {
-//        wait.until(ExpectedConditions.visibilityOf(socialAccountLink));
-//        socialAccountDropdown.click();
-//    }
-//    public void addFacebookAccount() {
-//        wait.until(ExpectedConditions.visibilityOf(facebookOption));
-//       // executor.executeScript("arguments[0].click();",facebookOption);
-//        facebookOption.sendKeys(Keys.ENTER);
-//    }
     public void selectSocial(String social){
 //        executor.executeScript("arguments[0].click()", selectSocialAccount);
     selectSocialAccount.click();
@@ -277,8 +256,5 @@ public class NewTalentsPage extends BasePage {
         wait.until(ExpectedConditions.visibilityOf(clickInterestLevelField));
         clickInterestLevelField.click();
     }
-
-
-
 
 }

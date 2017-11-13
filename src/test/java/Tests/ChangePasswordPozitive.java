@@ -25,7 +25,7 @@ public class ChangePasswordPozitive extends LoginBaseTest {
 
         };
     }
-    @Test(priority = 2,dataProvider = "passwordFromSameClass")
+    @Test(enabled = false,dataProvider = "passwordFromSameClass")
     public  void testChangePassword(String email, String password, String newPassword){
         loginPage.clickUserIcon();
         myProfilePage.clickMyProfileLink();
@@ -50,7 +50,7 @@ public class ChangePasswordPozitive extends LoginBaseTest {
 
     }
 
-    @Test(dataProviderClass = DataProviders.class,dataProvider= "passwordChange", enabled = false)
+    @Test(priority = 1, dataProviderClass = DataProviders.class,dataProvider= "passwordChange", enabled = true)
     public void TestChangePassword(String email, String password, String newPassword) throws InterruptedException{
         loginPage.setUserLogin(email);
         loginPage.setPasswordLogin(password);
@@ -64,7 +64,11 @@ public class ChangePasswordPozitive extends LoginBaseTest {
         myProfilePage.clickUpdatePassword();
         String message= myProfilePage.getPasswordChangeSuccessfully();
         assertEquals(message, "Password changed successfully.");
-        myProfilePage.clickOkBtn();
+        try {
+            myProfilePage.clickOkBtn();
+        }catch (Exception e){
+            System.out.println("Button ok was not clickable");
+        }
         loginPage.clickUserIcon();
         loginPage.clickSignOut();
         loginPage.setUserLogin(email);

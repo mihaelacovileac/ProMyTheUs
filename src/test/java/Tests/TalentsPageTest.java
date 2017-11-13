@@ -40,7 +40,7 @@ public class TalentsPageTest extends LoginBaseTest {
         Thread.sleep(1000);
         categoryPage.clickNextBtn();
         //personal info page
-        //talentsMenuLinks.clickPersonalLink(); //don't need to click on manue link.Next button moves to personal page
+        //talentsMenuLinks.clickPersonalLink(); //don't need to click on menu link.Next button moves to personal page
         newTalentsPage.setFirstNameField(firs);
         newTalentsPage.setMiddleName(middle);
         newTalentsPage.setLastName(last);
@@ -77,10 +77,9 @@ public class TalentsPageTest extends LoginBaseTest {
             itr.next().sendKeys(Integer.toString(numbers[i]));
             i++;
         }
+        categoryPage.clickNextBtn();
 
-
-
-
+        //Have to continue next pages before assertion
 
     }
 }
