@@ -76,6 +76,7 @@ public class TalentsPageTest extends LoginBaseTest {
         while(itr.hasNext()) {
             itr.next().sendKeys(Integer.toString(numbers[i]));
             i++;
+
         }
         categoryPage.clickNextBtn();
 
